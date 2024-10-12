@@ -1,31 +1,158 @@
-# React & Tailwind CSS Starter Pack
 
-This is a starter pack for creating React projects with Tailwind CSS configured. It uses React version **18.2** and Tailwind CSS version **3.2**.
+https://github.com/user-attachments/assets/77741ae4-f6af-4627-ae80-580a9caaced3
 
-## Usage
 
-This starter pack includes a basic setup for using **Tailwind CSS with React**. To start building your own components and styles, follow these steps:
+# Employee Management System
 
-1. Clone the repository to your local machine.
-    ```sh
-    git clone https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git
-    ```
+## Project Overview
 
-1. Install the required packages.
-    ```sh
-    cd react-tailwind-css-starter-pack
-    npm install
-    ```
+This is a full-stack **Employee Management System** application built using **React**, **Context API**, **HTML**, **CSS**, and **JavaScript** for the frontend, with a backend powered by **APIs** for managing employee data and authentication. The system enables users to create, edit, and manage employee records, with a secure OTP-based login/logout functionality.
 
-1. Start the development server.
-    ```sh
-    npm start
-    ```
-1. Open the project in your browser at [`http://localhost:3000`](http://localhost:3000) to view your project.
-1. Create your React components and add your styles using Tailwind classes. You can also create new CSS files and import them into your components.
+## Features
 
-The project is set up to use `postcss-cli` to process your CSS files. You can add your own `tailwind.config.js` file to customize your Tailwind setup.
+- **Home Page Dashboard**: Displays an overview of employee data.
+- **Create Employee**: Functionality to add new employees.
+- **Edit Employee**: Allows users to update existing employee details.
+- **Login/Logout with OTP Authentication**: Ensures secure access to the system.
 
-## Contributing
+## Frontend Technologies
 
-Contributions are welcome! If you have any suggestions or find any issues, please feel free to open an issue or a pull request.
+- **React**: Used for building the user interface.
+- **Context API**: For managing global application state.
+- **HTML, CSS, JavaScript**: Core technologies for building the interface.
+
+## Backend Technologies
+
+- **Node.js/Express**: Backend server to handle requests.
+- **APIs**: Used for managing employee data and authentication.
+- **Database (e.g., MongoDB, MySQL)**: For persistent storage of employee data.
+- **OTP Authentication API**: Ensures secure login via OTP.
+
+## Folder Structure
+
+```bash
+/frontend
+│
+├── /public
+│   ├── index.html                # Main HTML file
+│   └── favicon.ico               # Website favicon
+│
+├── /src
+│   ├── /assets                   # Assets like images, fonts, etc.
+│   │   ├── /images               # Images for the project
+│   │   └── /styles               # Global styles (Sass, CSS)
+│   │       └── main.scss         # Example: Main Sass file
+│   │
+│   ├── /components               # Reusable components
+│   │   ├── EmployeeForm.js       # Form for creating/editing employees
+│   │   ├── EmployeeList.js       # List of employees
+│   │   ├── Loader.js             # Loading spinner
+│   │   ├── LoginForm.js          # Form for logging in
+│   │   ├── Navbar.js             # Navigation bar component
+│   │   └── OTPVerificationForm.js# OTP verification form
+│   │
+│   ├── /pages                    # Pages (views) of the app
+│   │   ├── Login.js              # Login page
+│   │   ├── Dashboard.js          # Dashboard page
+│   │   ├── CreateEmployee.js     # Create new employee page
+│   │   ├── EmployeeList.js       # List of employees page
+│   │   └── EditEmployee.js       # Edit employee page
+│   │
+│   ├── /context                  # React Context (if using Context API)
+│   │   ├── AuthContext.js        # Handles user authentication state
+│   │   └── OtpContext.js         # Handles OTP state
+│   │
+│   ├── /services                 # API services (Axios or Fetch calls)
+│   │   ├── authService.js        # API calls for authentication
+│   │   ├── otpService.js         # API calls for OTP
+│   │
+│   ├── App.js                    # Main React component
+│   ├── index.js                  # Entry point for React, renders App.js
+│
+├── package.json                  # Lists dependencies and project information
+├── .env                          # Environment variables (API URLs, etc.)
+├── .gitignore                    # Git ignore file for node_modules, etc.
+└── README.md                     # Documentation about the project
+
+/backend
+│
+├── /config
+│   ├── db.js                    # MongoDB connection setup
+│   └── cloudinary.js            # Cloudinary connection setup
+│
+├── /controllers
+│   ├── authController.js        # Handles user registration, login, and OTP verification
+│   └── employeeController.js    # Handles employee-related CRUD operations
+│
+├── /middleware
+│   ├── authMiddleware.js        # Protects routes (JWT verification, etc.)
+│   └── otpMiddleware.js         # Middleware for OTP verification and handling
+│
+├── /models
+│   ├── User.js                  # User schema (stores user details like name, email, password)
+│   ├── Otp.js                   # OTP schema (stores OTPs and expiration times)
+│   └── Employee.js              # Employee schema (for employee records)
+│
+├── /routes
+│   ├── authRoutes.js            # Authentication routes (register, login, OTP verification)
+│   └── employeeRoutes.js        # Employee-related routes (CRUD operations)
+│
+├── /services
+│   └── emailService.js          # Sends emails (OTP emails to users)
+│
+├── /utils
+│   └── otpGenerator.js          # Generates OTP codes
+│
+├── server.js                    # Entry point of the application
+├── .env                         # Environment variables (for sensitive data like DB URI, email credentials)
+├── .gitignore                   # Git ignore file for node_modules, etc.
+├── README.md                    # Documentation about the project
+└── package.json                 # Lists dependencies and project information
+
+```
+
+## Installation Instructions
+
+1. Clone the repository.
+2. Navigate to the project directory and install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up backend:
+   - Install backend dependencies:
+     ```bash
+     cd backend
+     npm install
+     ```
+   - Start the backend server:
+     ```bash
+     npm run start || npm run dev 
+     ```
+4. Run the frontend:
+   ```bash
+   npm start
+   ```
+
+## API Endpoints
+
+- **Employee Management**:
+  - `POST /api/employees` - Create a new employee.
+  - `GET /api/employees/:id` - Retrieve employee details.
+  - `PUT /api/employees/:id` - Update an employee.
+  - `DELETE /api/employees/:id` - Delete an employee.
+  
+- **Authentication**:
+  - `POST /api/auth/login` - Login with OTP.
+  - `POST /api/auth/verify` - Verify OTP for login.
+
+## Authentication Flow
+
+1. The user logs in using their credentials.
+2. OTP is generated and sent to the user for verification.
+3. Once the OTP is verified, the user gains access to the dashboard.
+
+## Future Enhancements
+
+- Role-based access control.
+- Export employee data to CSV.
+- Integration with cloud-based storage solutions.
