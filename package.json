@@ -1,0 +1,25 @@
+{
+  "name": "dealsdray",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-frontend": "cd frontend && npm ci && npm run start",
+    "build-backend": "cd server && npm ci && npm run dev",
+    "build-servers": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm run build-backend\" \"npm run build-frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0",
+    "react-scripts": "5.0.1",
+    "react-stars": "^2.2.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
