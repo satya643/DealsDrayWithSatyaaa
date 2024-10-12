@@ -126,7 +126,7 @@ This is a full-stack **Employee Management System** application built using **Re
      ```
    - Start the backend server:
      ```bash
-     npm run start || npm run dev 
+     npm run dev 
      ```
 4. Run the frontend:
    ```bash
